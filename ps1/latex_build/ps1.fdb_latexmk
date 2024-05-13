@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1715625202 "c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1.tex" "latex_build/ps1.pdf" "ps1" 1715625209 0
+["pdflatex"] 1715625774 "c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1.tex" "latex_build/ps1.pdf" "ps1" 1715625782 0
   "C:/Users/ricar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1714518104 96512 728daa2bf10daccd15d652d7442cbc12 ""
   "C:/Users/ricar/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1700169655 24212876 e5690f43656210f12b606738fe96f13e ""
   "C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -109,7 +109,7 @@
   "C:/Users/ricar/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty" 1576433952 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "C:/Users/ricar/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657800696 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/ricar/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1.tex" 1715625192 1944 1491e1533b33b00f9be8744452fa6578 ""
+  "c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1.tex" 1715625450 1944 1491e1533b33b00f9be8744452fa6578 ""
   "figures/ar1_conv_dist.png" 1715625044 185311 135e56a3c6c8df02bbf34348c044f63c ""
   "figures/ar1_conv_prob.png" 1715625043 136816 0546b2e8d0187d93eba0bd84bd8a9d2b ""
   "figures/ar1_pred.png" 1715624434 116019 8852bf7b7742bc3c56ae7c085adb967c ""
@@ -127,9 +127,9 @@
   "figures/ma1_pred.png" 1715624435 113729 55c78fb3cdaf0d12c9995442cb14f298 ""
   "figures/ma1_test_size.png" 1715625042 141358 80c31da70ff06cad11638b15aee4a59d ""
   "figures/ma2_pred.png" 1715624436 114914 b8510750e55bd119d78c67ddacb2487c ""
-  "latex_build/ps1.aux" 1715625209 163 62caa2a276925a140dfb5a09f5283243 "pdflatex"
-  "latex_build/ps1.out" 1715625203 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "ps1.tex" 1715625192 1944 1491e1533b33b00f9be8744452fa6578 ""
+  "latex_build/ps1.aux" 1715625782 163 62caa2a276925a140dfb5a09f5283243 "pdflatex"
+  "latex_build/ps1.out" 1715625775 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "ps1.tex" 1715625450 1944 1491e1533b33b00f9be8744452fa6578 ""
   "tables/models_1_to_4.tex" 1715624863 58 b9654195ac147a4df9c678ce6a9af2e0 ""
   "tables/models_5_to_8.tex" 1715624863 58 b9654195ac147a4df9c678ce6a9af2e0 ""
   (generated)
