@@ -52,8 +52,8 @@
 
 Below are the regression tables for each model:
 
-\input{Tables/ps1_models_1.tex}
-\input{Tables/ps1_models_2.tex}
+\input{tables/models_1_to_4.tex}
+\input{tables/models_5_to_8.tex}
 
 \newpage
 
@@ -64,7 +64,7 @@ Below are the forecasts for each model:
 
 \foreach \i in {ma1, ma2, ar1, ar2, arma1_1, arma2_1, arma1_2, arma2_2} {
     \begin{figure}[!htbp]
-        \centering\includegraphics[width=0.5\textwidth]{Figures/ps1_\i_pred.png}
+        \centering\includegraphics[width=0.5\textwidth]{figures/\i_pred.png}
     \end{figure}
 }
 
@@ -85,7 +85,7 @@ Below there is, for each model, one plot for each topic.
 \foreach \i in {ar1, ma1, arma1_1} {
     \foreach \j in {conv_prob, conv_dist, test_size} {
         \begin{figure}[!htbp]
-            \centering\includegraphics[width=0.5\textwidth]{Figures/ps1_\i_\j.png}
+            \centering\includegraphics[width=0.5\textwidth]{figures/\i_\j.png}
         \end{figure}
     }
 }

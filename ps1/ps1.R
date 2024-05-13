@@ -4,10 +4,9 @@
 library(tidyverse)
 library(stargazer)
 library(furrr)
-library(patchwork)
 library(glue)
 
-set.seed(20240508)
+set.seed(20240513)
 
 plan(multisession, workers = 7)
 
@@ -107,7 +106,7 @@ plot_test_size <- function(x, model_name, coefs) {
 # Question 1 --------------------------------------------------------------
 
 # Setup:
-data <- read_csv("data/data_gdp_brazil.csv") %>%
+data <- read_csv("ps1/data/data_gdp_brazil.csv") %>%
   rename(PIB = 2)
 
 orders <- list(
@@ -128,7 +127,7 @@ pretty_names <- prettify_model_names(names(models))
 
 # Results:
 #i = 1; inds = list(1:4, 5:8)[[i]]
-iwalk(list(1:4, 5:8), function(inds, i) {
+iwalk(list(`1_to_4` = 1:4, `5_to_8` = 5:8), function(inds, i) {
   stargazer(models[inds],
             type = "latex",
             dep.var.caption = "",
@@ -143,7 +142,7 @@ iwalk(list(1:4, 5:8), function(inds, i) {
             )
   ) %>%
     capture.output() %>%
-    writeLines(glue("Tables/ps1_models_{i}.tex"))
+    writeLines(glue("ps1/tables/models_{i}.tex"))
 })
 
 
@@ -168,7 +167,7 @@ iwalk(predictions, function(pred, name) {
       x = "Year"
     )
   
-  ggsave(paste0("Figures/ps1_", name, "_pred", ".png"), graph, width = 6, height = 3)
+  ggsave(glue("ps1/figures/{name}_pred.png"), graph, width = 6, height = 3)
 })
 
 
@@ -188,8 +187,6 @@ sample_sizes <- c(
   seq(110, 200, 10),
   seq(250, 500, 50)
 )
-
-theta <- 0.5
 
 mc_reps <- 500 #1000
 
@@ -223,7 +220,7 @@ all_results <- imap(parameters, function(params, p_name) {
   #d_name = "exp"; dist = distributions[[d_name]]
   data_per_dist <- imap(distributions, function(dist, d_name) {
     
-    cat(paste0("\nIteration: ", p_name, "-", d_name, "\n"))
+    cat(glue("\nIteration: {p_name} - {d_name}\n"))
     
     #size = sample_sizes[[1]]
     data_per_size <- future_map(sample_sizes, function(size) {
@@ -254,7 +251,9 @@ all_results <- imap(parameters, function(params, p_name) {
         conv_dist = get_dist_conv_data(mc_results_agg$bias_normalized, quantiles),
         test_size = get_test_size_data(mc_results_agg$reject)
       )
-    }, .options = furrr_options(seed = TRUE), .progress = TRUE
+    },
+    .options = furrr_options(seed = TRUE),
+    .progress = TRUE
     )
     
     transpose(data_per_size) %>% map(~ do.call(rbind, .x))
@@ -276,11 +275,11 @@ all_results <- imap(parameters, function(params, p_name) {
 })
 
 if (FALSE) {
-  saveRDS(all_results, "data/ps1_simulation.rds")
+  saveRDS(all_results, "ps1/data/simulation_results.rds")
   
   iwalk(all_results, function(p, p_name) {
     iwalk(p$plots, function(g, g_name) {
-      ggsave(paste0("Figures/ps1_", p_name, "_", g_name, ".png"), g, width = 6, height = 4.5)
+      ggsave(glue("ps1/figures/{p_name}_{g_name}.png"), g, width = 6, height = 4.5)
     })
   })
 }
