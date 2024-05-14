@@ -1,7 +1,7 @@
 PWD c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1
 INPUT C:\Users\ricar\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\ps1.tex
-OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.log
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\ps1_text.tex
+OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.log
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\base\size12.clo
@@ -159,10 +159,10 @@ INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\psnfss\t1ptm.fd
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8t.tfm
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.aux
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.aux
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.aux
-OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.aux
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.aux
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.aux
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.aux
+OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.aux
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\graphics\color.sty
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\graphics\color.sty
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\graphics-cfg\color.cfg
@@ -171,14 +171,14 @@ INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\graphics-cfg\color.
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.pdf
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+OUTPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.pdf
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -212,6 +212,24 @@ INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8t.
 INPUT .\tables\models_1_to_4.tex
 INPUT .\tables\models_1_to_4.tex
 INPUT tables\models_1_to_4.tex
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8t.tfm
 INPUT .\tables\models_5_to_8.tex
 INPUT .\tables\models_5_to_8.tex
 INPUT tables\models_5_to_8.tex
@@ -227,6 +245,8 @@ INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb8t.v
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr8t.vf
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri8t.vf
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
 INPUT .\figures\ma1_pred.png
 INPUT .\figures\ma1_pred.png
 INPUT .\figures\ma1_pred.png
@@ -346,10 +366,27 @@ INPUT .\figures\arma1_1_test_size.png
 INPUT .\figures\arma1_1_test_size.png
 INPUT .\figures\arma1_1_test_size.png
 INPUT .\figures\arma1_1_test_size.png
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.aux
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
-INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8t.tfm
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb8t.vf
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.aux
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+INPUT c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmb8a.pfb
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmb8a.pfb
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmr8a.pfb
 INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmr8a.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmri8a.pfb
+INPUT C:\Users\ricar\AppData\Local\Programs\MiKTeX\fonts\type1\urw\times\utmri8a.pfb

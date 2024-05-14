@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.16)  13 MAY 2024 15:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.16)  14 MAY 2024 00:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1.tex"
-(c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1.tex
+**"c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1_text.tex"
+(c:/Users/ricar/OneDrive/A-Estudo/Mestrado/2T - Econometrics II/task-econometrics2/ps1/ps1_text.tex
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
 (C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -317,8 +317,8 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 File: l3backend-pdftex.def 2023-10-23 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count296
 \l__pdf_internal_box=\box58
-) (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.aux)
-\openout1 = `ps1.aux'.
+) (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.aux)
+\openout1 = `ps1_text.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
 LaTeX Font Info:    ... okay on input line 45.
@@ -381,9 +381,9 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
  (C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 45.
- (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out) (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.out)
+ (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out) (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.out)
 \@outlinefile=\write3
-\openout3 = `ps1.out'.
+\openout3 = `ps1_text.out'.
 
  (C:\Users\ricar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -413,113 +413,116 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (tables/models_1_to_4.tex) (tables/models_5_to_8.tex) [1
 
-{C:/Users/ricar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-<figures/ma1_pred.png, id=12, 433.62pt x 216.81pt>
+{C:/Users/ricar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2] [3]
+<figures/ma1_pred.png, id=25, 433.62pt x 216.81pt>
 File: figures/ma1_pred.png Graphic file (type png)
 <use figures/ma1_pred.png>
 Package pdftex.def Info: figures/ma1_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
-<figures/ma2_pred.png, id=13, 433.62pt x 216.81pt>
+<figures/ma2_pred.png, id=26, 433.62pt x 216.81pt>
 File: figures/ma2_pred.png Graphic file (type png)
 <use figures/ma2_pred.png>
 Package pdftex.def Info: figures/ma2_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
-<figures/ar1_pred.png, id=14, 433.62pt x 216.81pt>
+<figures/ar1_pred.png, id=27, 433.62pt x 216.81pt>
 File: figures/ar1_pred.png Graphic file (type png)
 <use figures/ar1_pred.png>
 Package pdftex.def Info: figures/ar1_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
-<figures/ar2_pred.png, id=15, 433.62pt x 216.81pt>
+<figures/ar2_pred.png, id=28, 433.62pt x 216.81pt>
 File: figures/ar2_pred.png Graphic file (type png)
 <use figures/ar2_pred.png>
 Package pdftex.def Info: figures/ar2_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
-<figures/arma1_1_pred.png, id=16, 433.62pt x 216.81pt>
+<figures/arma1_1_pred.png, id=29, 433.62pt x 216.81pt>
 File: figures/arma1_1_pred.png Graphic file (type png)
 <use figures/arma1_1_pred.png>
 Package pdftex.def Info: figures/arma1_1_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
-<figures/arma2_1_pred.png, id=17, 433.62pt x 216.81pt>
+<figures/arma2_1_pred.png, id=30, 433.62pt x 216.81pt>
 File: figures/arma2_1_pred.png Graphic file (type png)
 <use figures/arma2_1_pred.png>
 Package pdftex.def Info: figures/arma2_1_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
-<figures/arma1_2_pred.png, id=18, 433.62pt x 216.81pt>
+<figures/arma1_2_pred.png, id=31, 433.62pt x 216.81pt>
 File: figures/arma1_2_pred.png Graphic file (type png)
 <use figures/arma1_2_pred.png>
 Package pdftex.def Info: figures/arma1_2_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
-<figures/arma2_2_pred.png, id=19, 433.62pt x 216.81pt>
+ [4 <./figures/ma1_pred.png> <./figures/ma2_pred.png> <./figures/ar1_pred.png> <./figures/ar2_pred.png> <./figures/arma1_1_pred.png>]
+<figures/arma2_2_pred.png, id=37, 433.62pt x 216.81pt>
 File: figures/arma2_2_pred.png Graphic file (type png)
 <use figures/arma2_2_pred.png>
 Package pdftex.def Info: figures/arma2_2_pred.png  used on input line 69.
 (pdftex.def)             Requested size: 220.50887pt x 110.25403pt.
- [2 <./figures/ma1_pred.png> <./figures/ma2_pred.png> <./figures/ar1_pred.png> <./figures/ar2_pred.png> <./figures/arma1_1_pred.png>] [3 <./figures/arma2_1_pred.png> <./figures/arma1_2_pred.png> <./figures/arma2_2_pred.png>] [4]
-<figures/ar1_conv_prob.png, id=34, 433.62pt x 325.215pt>
+ [5 <./figures/arma2_1_pred.png> <./figures/arma1_2_pred.png> <./figures/arma2_2_pred.png>]
+<figures/ar1_conv_prob.png, id=43, 433.62pt x 325.215pt>
 File: figures/ar1_conv_prob.png Graphic file (type png)
 <use figures/ar1_conv_prob.png>
-Package pdftex.def Info: figures/ar1_conv_prob.png  used on input line 91.
+Package pdftex.def Info: figures/ar1_conv_prob.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/ar1_conv_dist.png, id=35, 433.62pt x 325.215pt>
+<figures/ar1_conv_dist.png, id=44, 433.62pt x 325.215pt>
 File: figures/ar1_conv_dist.png Graphic file (type png)
 <use figures/ar1_conv_dist.png>
-Package pdftex.def Info: figures/ar1_conv_dist.png  used on input line 91.
+Package pdftex.def Info: figures/ar1_conv_dist.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/ar1_test_size.png, id=36, 433.62pt x 325.215pt>
+<figures/ar1_test_size.png, id=45, 433.62pt x 325.215pt>
 File: figures/ar1_test_size.png Graphic file (type png)
 <use figures/ar1_test_size.png>
-Package pdftex.def Info: figures/ar1_test_size.png  used on input line 91.
+Package pdftex.def Info: figures/ar1_test_size.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/ma1_conv_prob.png, id=37, 433.62pt x 325.215pt>
+<figures/ma1_conv_prob.png, id=46, 433.62pt x 325.215pt>
 File: figures/ma1_conv_prob.png Graphic file (type png)
 <use figures/ma1_conv_prob.png>
-Package pdftex.def Info: figures/ma1_conv_prob.png  used on input line 91.
+Package pdftex.def Info: figures/ma1_conv_prob.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/ma1_conv_dist.png, id=38, 433.62pt x 325.215pt>
+<figures/ma1_conv_dist.png, id=47, 433.62pt x 325.215pt>
 File: figures/ma1_conv_dist.png Graphic file (type png)
 <use figures/ma1_conv_dist.png>
-Package pdftex.def Info: figures/ma1_conv_dist.png  used on input line 91.
+Package pdftex.def Info: figures/ma1_conv_dist.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/ma1_test_size.png, id=39, 433.62pt x 325.215pt>
+ [6 <./figures/ar1_conv_prob.png> <./figures/ar1_conv_dist.png> <./figures/ar1_test_size.png>]
+<figures/ma1_test_size.png, id=54, 433.62pt x 325.215pt>
 File: figures/ma1_test_size.png Graphic file (type png)
 <use figures/ma1_test_size.png>
-Package pdftex.def Info: figures/ma1_test_size.png  used on input line 91.
+Package pdftex.def Info: figures/ma1_test_size.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/arma1_1_conv_prob.png, id=40, 433.62pt x 325.215pt>
+<figures/arma1_1_conv_prob.png, id=55, 433.62pt x 325.215pt>
 File: figures/arma1_1_conv_prob.png Graphic file (type png)
 <use figures/arma1_1_conv_prob.png>
-Package pdftex.def Info: figures/arma1_1_conv_prob.png  used on input line 91.
+Package pdftex.def Info: figures/arma1_1_conv_prob.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/arma1_1_conv_dist.png, id=41, 433.62pt x 325.215pt>
+<figures/arma1_1_conv_dist.png, id=56, 433.62pt x 325.215pt>
 File: figures/arma1_1_conv_dist.png Graphic file (type png)
 <use figures/arma1_1_conv_dist.png>
-Package pdftex.def Info: figures/arma1_1_conv_dist.png  used on input line 91.
+Package pdftex.def Info: figures/arma1_1_conv_dist.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
-<figures/arma1_1_test_size.png, id=42, 433.62pt x 325.215pt>
+ [7 <./figures/ma1_conv_prob.png> <./figures/ma1_conv_dist.png> <./figures/ma1_test_size.png>]
+<figures/arma1_1_test_size.png, id=62, 433.62pt x 325.215pt>
 File: figures/arma1_1_test_size.png Graphic file (type png)
 <use figures/arma1_1_test_size.png>
-Package pdftex.def Info: figures/arma1_1_test_size.png  used on input line 91.
+Package pdftex.def Info: figures/arma1_1_test_size.png  used on input line 93.
 (pdftex.def)             Requested size: 220.50887pt x 165.38106pt.
- [5 <./figures/ar1_conv_prob.png> <./figures/ar1_conv_dist.png> <./figures/ar1_test_size.png>] [6 <./figures/ma1_conv_prob.png> <./figures/ma1_conv_dist.png> <./figures/ma1_test_size.png>] [7 <./figures/arma1_1_conv_prob.png> <./figures/arma1_1_conv_dist.png> <./figures/arma1_1_test_size.png>] [8] [9] [10] (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.aux)
+ [8 <./figures/arma1_1_conv_prob.png> <./figures/arma1_1_conv_dist.png> <./figures/arma1_1_test_size.png>] [9] [10] [11] (c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
-Package rerunfilecheck Info: File `ps1.out' has not changed.
+Package rerunfilecheck Info: File `ps1_text.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16168 strings out of 474591
- 281345 string characters out of 5745777
- 1926533 words of memory out of 5000000
- 38096 multiletter control sequences out of 15000+600000
- 577146 words of font info for 60 fonts, out of 8000000 for 9000
+ 16201 strings out of 474591
+ 281819 string characters out of 5745777
+ 1944533 words of memory out of 5000000
+ 38118 multiletter control sequences out of 15000+600000
+ 587144 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,6n,67p,609b,447s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
-Output written on "c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1.pdf" (10 pages, 2785676 bytes).
+ 63i,10n,67p,614b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ricar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on "c:\Users\ricar\OneDrive\A-Estudo\Mestrado\2T - Econometrics II\task-econometrics2\ps1\latex_build\ps1_text.pdf" (11 pages, 2857822 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 20 named destinations out of 1000 (max. 500000)
+ 129 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

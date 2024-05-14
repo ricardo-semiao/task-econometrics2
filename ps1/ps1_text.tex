@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+
+% Geometry
+\usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=3cm]{geometry}
+
+% Font encoding
+\usepackage[utf8]{inputenc} % UTF-8 encoding
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{times}
+
+% Math packages
+\usepackage{amsmath} % Basic math symbols and environments
+\usepackage{amssymb} % Additional math symbols
+\usepackage{amsfonts} % Math fonts
+
+% Text packages
+\usepackage{parskip}
+\setlength{\parskip}{1em}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+}
+
+% Pictures
+\usepackage{graphicx}
+\usepackage{float}
+
+% Lists
+\usepackage{enumitem}
+\setlist[itemize]{itemsep = -0.5em, topsep = -0.5em}
+
+% Bibliography
+%\usepackage{cite}
+
+% Loops:
+\usepackage{pgffor}
+
+% Title and author
+\title{Econometrics II - Problem Set 1}
+\author{Ricardo Semião e Castro}
+\date{05/2024}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 1}
+
+\subsection*{Item a. and b.}
+
+Below are the regression tables for each model:
+
+\input{tables/models_1_to_4.tex}
+\input{tables/models_5_to_8.tex}
+
+\newpage
+
+
+\subsection*{Item c.}
+
+Below are the forecasts for each model:
+
+\foreach \i in {ma1, ma2, ar1, ar2, arma1_1, arma2_1, arma1_2, arma2_2} {
+    \begin{figure}[H]
+        \centering\includegraphics[width=0.5\textwidth]{figures/\i_pred.png}
+    \end{figure}
+}
+
+%\newpage
+
+
+\subsection*{Item d.}
+
+I would choose the ARMA(1,1) model, as it has the lowest AIC and BIC values. It also seems to be a balanced choice, given that normally it is not needed many lags to capture the dynamics of yearly GDP series. Lastly, it was the one that had the most smooth return to the historical mean, which is a desirable feature given the nature of that mean being so much bigger than the current values.
+
+\newpage
+
+
+\section*{Question 2}
+
+\subsection*{Item a., b., and c.}
+
+Below there is, for each model, one plot for each topic.
+
+\foreach \i in {ar1, ma1, arma1_1} {
+    \foreach \j in {conv_prob, conv_dist, test_size} {
+        \begin{figure}[H]
+            \centering\includegraphics[width=0.5\textwidth]{figures/\i_\j.png}
+        \end{figure}
+    }
+}
+
+About convergence in probability: the AR and MA coefficients converge, regardless of the model and the distribution. The intercept never converges, as it is consistently different than zero, it always presents some bias, even if it is small.
+
+About convergence in distribution: all coefficients converge, regardless of the model and the distribution. The only exception is the intercept with exponential distribution, which does not converge, and is associated with a right-skewed distribution, with a skewness increasing with the sample size.
+
+About convergence of test size: all tests converge to the desired level of 0.05, regardless of the model and the distribution. The only exception is the intercept with exponential distribution, which always rejects the null hypothesis, given the aforementioned bias.
+
+%\newpage
+
+
+\subsection*{Item d.}
+
+Yes, 500 periods seem to be enough to yield good approximations in the sense of convergence in probability, distribution, and test size. The only exception is the intercept with exponential distribution, which yield poor results for the intercepts, but that is more of a problem of poor model specification than of sample size.
+
+\newpage
+
+
+\section*{Question 3}
+
+\textbf{a)} A white noise, a random process with zero mean, constant variance, and no autocorrelation by definition, is clearly weakly stationary.
+
+\textbf{b)} A random walk with drift -- $Y_t = Y_{t-1} + \delta + \epsilon_t$ with $\epsilon_t$ white noise --, a random process that has a stochastic trend, will have a time-varying average, thus not weakly stationary.
+
+\newpage
+
+
+\section*{Question 4}
+
+If $Y_t$ is weakly stationary, the $E[Y_t] = \mu \forall t$ and $E[(Y_t-\mu)(Y_{t-j}-\mu)] = \gamma_j \forall t, j$. Then, this is valid for the period $t+j$ too:
+
+$$
+\gamma_j = E[(Y_{t+j}-\mu)(Y_{t+j-j}-\mu)] = E[(Y_{t+j}-\mu)(Y_{t}-\mu)] = \gamma_{-j}
+$$
+
+\end{document}

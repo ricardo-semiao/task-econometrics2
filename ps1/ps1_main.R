@@ -135,7 +135,6 @@ iwalk(list(`1_to_4` = 1:4, `5_to_8` = 5:8), function(inds, i) {
             model.numbers = FALSE,
             report = "vcsp",
             omit.stat = "aic",
-            label = NULL,
             add.lines = list(
               c("AIC", map_dbl(models, ~ round(AIC(.x) ,3))),
               c("BIC", map_dbl(models, ~ round(BIC(.x) ,3)))
@@ -174,13 +173,13 @@ iwalk(predictions, function(pred, name) {
 # Question 2 --------------------------------------------------------------
 
 # Setup:
-distributions <- list(norm = rnorm, exp = rexp)
-
 parameters <- list(
   ma1 = list(order = c(0,0,1), ma = 0.5),
   ar1 = list(order = c(1,0,0), ar = 0.3),
   arma1_1 = list(order = c(1,0,1), ar = 0.3, ma = 0.5)
 )
+
+distributions <- list(norm = rnorm, exp = rexp)
 
 sample_sizes <- c(
   seq(30, 100, 1),
