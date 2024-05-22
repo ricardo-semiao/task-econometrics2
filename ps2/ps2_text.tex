@@ -48,21 +48,72 @@
 
 \maketitle
 
+
 \section*{Question 1}
 
 \subsection*{Item 1.}
+For the process:
+
+$$
+Y_{t+s} = \alpha + \delta(t+s) + \epsilon_{t+s} + \theta \epsilon_{t+s-1}
+$$
+
+We have:
+
+\begin{align*}
+    \frac{Y_{t+0}}{\epsilon_{t}} &= 1\\
+    \frac{Y_{t+1}}{\epsilon_{t}} &= \theta\\
+    \frac{Y_{t+s}}{\epsilon_{t}} &= 0,~ \forall s \geq 2\\
+\end{align*}
+
 
 \subsection*{Item 2.}
 
+Lets rewrite the process as:
+
+$$
+Y_{t} = \delta + Y_{t-1} + \epsilon_{t}\\
+Y_{t} = \delta + \sum_{i=1}^{t-1}\delta + \sum_{i=1}^{t}\epsilon_{i}\\
+Y_{t} = \delta t + \sum_{i=1}^{t}\epsilon_{i}\\
+Y_{t+s} = \delta (t+s) + \sum_{i=1}^{t+s}\epsilon_{i}
+$$
+
+We have:
+
+\begin{align*}
+    \frac{Y_{t+0}}{\epsilon_{t}} &= 1\\
+    \frac{Y_{t+1}}{\epsilon_{t}} &= 1\\
+    \frac{Y_{t+s}}{\epsilon_{t}} &= 1,~ \forall s\\
+\end{align*}
+
+
 \subsection*{Item 3.}
+In the first case, a $I(0)$ process, the effect of the shock disappeared after two periods -- as $\frac{Y_{t+s}}{\epsilon_{t}} = 0,~ \forall s \geq 2$ --, which can be interpreted as the process having 'low' memory.
+
+In the second case, a $I(1)$ process, the effect of the shock is permanent -- as $\frac{Y_{t+s}}{\epsilon_{t}} = 1,~ \forall s$ --, which can be interpreted as the process having 'high' memory. Regardless of the period, the effect of the shock is always present.
+
+
 
 \section*{Question 2}
 
-\subsection*{Item 1.}
+\subsection*{Item 1. and 2.}
+Check the code in the file \textit{ps2\_main.R}. The results are:
 
-\subsection*{Item 2.}
+\begin{itemize}
+    \item For a specification with $5$ degrees of freedom, the rejection rate of the test is approximately $0.1041$.
+    \item For a specification with $1$ degrees of freedom, the rejection rate of the test is approximately $0.0876$.
+\end{itemize}
+
 
 \subsection*{Item 3.}
+
+Yes, the results are very different. Specially, the first distribution seems to be in line with the convergence in distribution result aforementioned, while the second is not.
+
+One possible explanation lies in the requirements for such asymptotic result to be valid. In the derivation of the convergence, it was used the "Theorem 1", which stated that the covariance matrix of the bias of the OLS estimators for a deterministic time trend model (multiplied by a scaling in $T$) converged to a well defined matrix only if: $E[\epsilon_t] = 0$, $E[\epsilon^2_t] = \sigma^2$, and  $E[\epsilon^4_t] = < \infty$.
+
+We know that the variance of a t-student RV is $\frac{df}{df-2}$, and it is not well defined if $0 < df \leq 1$. The kurtosis is also not well defined for $0 < df \leq 2$. Thus, the requirements for the mentioned result are not met in the first case, which could explain the difference in the results.
+
+
 
 \section*{Question 3}
 
@@ -71,6 +122,8 @@
 \subsection*{Item 2.}
 
 \subsection*{Item 3.}
+
+
 
 \section*{Question 4}
 
@@ -96,5 +149,6 @@ Test statistic is the estimated coefficient of the lagged time serie, divided by
 The results are presented below, with p-values in parenthesis. We can see that the null hypothesis is rejected for all three specifications, for any number of lags, which indicates that the series has a unit root.
 
 \input{tables/adf_test.tex}
+
 
 \end{document}
