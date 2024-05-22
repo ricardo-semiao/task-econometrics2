@@ -61,9 +61,9 @@ $$
 We have:
 
 \begin{align*}
-    \frac{Y_{t+0}}{\epsilon_{t}} &= 1\\
-    \frac{Y_{t+1}}{\epsilon_{t}} &= \theta\\
-    \frac{Y_{t+s}}{\epsilon_{t}} &= 0,~ \forall s \geq 2\\
+    &\frac{Y_{t+0}}{\epsilon_{t}} = 1&
+    &\frac{Y_{t+1}}{\epsilon_{t}} = \theta&
+    &\frac{Y_{t+s}}{\epsilon_{t}} = 0,~ \forall s \geq 2&
 \end{align*}
 
 
@@ -81,9 +81,9 @@ $$
 We have:
 
 \begin{align*}
-    \frac{Y_{t+0}}{\epsilon_{t}} &= 1\\
-    \frac{Y_{t+1}}{\epsilon_{t}} &= 1\\
-    \frac{Y_{t+s}}{\epsilon_{t}} &= 1,~ \forall s\\
+    &\frac{Y_{t+0}}{\epsilon_{t}} = 1&
+    &\frac{Y_{t+1}}{\epsilon_{t}} = 1&
+    &\frac{Y_{t+s}}{\epsilon_{t}} = 1,~ \forall s&
 \end{align*}
 
 
@@ -117,11 +117,220 @@ We know that the variance of a t-student RV is $\frac{df}{df-2}$, and it is not 
 
 \section*{Question 3}
 
-\subsection*{Item 1.}
+\subsection*{Item 1. a) and b)}
+The OLS estimator for this case can be written as below. The first passage comes from substituting the populational model.
 
-\subsection*{Item 2.}
+$$
+\hat{\rho}_T = \frac{\sum_{t=1}^{T} Y_{t-1}Y_t}{\sum_{t=1}^{T} Y_{t-1}^2} = \rho + \frac{\sum_{t=1}^{T} Y_{t-1}\epsilon_t}{\sum_{t=1}^{T} Y_{t-1}^2}
+$$
+
+Then, lets analyze the given expression:
+
+\begin{align*}
+    T (\hat{\rho}_T - \rho) &= T \frac{\sum_{t=1}^{T} Y_{t-1}\epsilon_t}{\sum_{t=1}^{T} Y_{t-1}^2}\\
+    &= \left(\frac{\sum_{t=1}^{T} Y_{t-1}\epsilon_t}{T}\right)\left(\frac{\sum_{t=1}^{T} Y_{t-1}^2}{T^2}\right)^{-1}
+\end{align*}
+
+Using the known results for convergence in distribution of the first and second term, and joining them via Slutsky:
+
+$$
+T (\hat{\rho}_T - \rho) \xrightarrow{d} \frac{\sigma^2((W(1))^2 - 1)/2}{\sigma^2 \int^1_0 [W(r)]^2 dr}
+$$
+
+As was asked. Lets do the second item.
+
+Recall that the standard error is $\hat{\sigma}_{\hat{\rho}_T} = \left(\frac{s^2_T}{\sum_{t=1}^{T} Y_{t-1}^2}\right)^{\frac{1}{2}}$. Obs: $s^2_T = \hat{V}[\epsilon_t]$.
+
+Then:
+
+\begin{align*}
+    \frac{\hat{\rho}_T - \rho}{\hat{\sigma}_{\hat{\rho}_T}} &= (\hat{\rho}_T - \rho) (s^2_T)^{-\frac{1}{2}}\left(\sum_{t=1}^{T} Y_{t-1}^2\right)^{\frac{1}{2}}\\
+    &= \left(\frac{\sum_{t=1}^{T} Y_{t-1}\epsilon_t}{T}\right)\left(\frac{\sum_{t=1}^{T} Y_{t-1}^2}{T^2}\right)^{-1} \left(s^2_T\right)^{-\frac{1}{2}}\left(\frac{\sum_{t=1}^{T} Y_{t-1}^2}{T^2}\right)^{\frac{1}{2}}\\
+    &= \left(\frac{\sum_{t=1}^{T} Y_{t-1}\epsilon_t}{T}\right)\left(s^2_T\right)^{-\frac{1}{2}}\left(\frac{\sum_{t=1}^{T} Y_{t-1}^2}{T^2}\right)^{-\frac{1}{2}}
+\end{align*}
+
+Using the known results for convergence in distribution and the consistency of $s^2_T$, and joining these results via Slutsky:
+
+$$
+\frac{\hat{\rho}_T - \rho}{\hat{\sigma}_{\hat{\rho}_T}} \xrightarrow{d} \frac{\sigma^2((W(1))^2 - 1)/2}{\left(\sigma^2 \int^1_0 [W(r)]^2 dr\right)^\frac{1}{2}(\sigma^2)^\frac{1}{2}} = \xrightarrow{d} \frac{((W(1))^2 - 1)/2}{\left(\int^1_0 [W(r)]^2 dr\right)^\frac{1}{2}}
+$$
+
+As was asked.
+
+
+\subsection*{Item 2. a) and b)}
+
+The OLS estimator for this case can be written as below. The first passage comes from substituting the populational model.
+
+\begin{align*}
+    \begin{bmatrix}
+        \hat{\alpha}_T\\ \hat{\rho}_T
+    \end{bmatrix} &=
+    \begin{bmatrix}
+        T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+        \sum Y_{t-1} \\ \sum Y_{t-1}Y_T
+    \end{bmatrix}\\
+    \begin{bmatrix}
+        \hat{\alpha}_T\\ \hat{\rho}_T - \rho
+    \end{bmatrix} &= \begin{bmatrix}
+        T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+        \sum \epsilon_t \\ \sum Y_{t-1}\epsilon_t
+    \end{bmatrix}
+\end{align*}
+
+Now lets analyze the given expression. On top of multiplying $\hat{\rho}_T - \rho$ by $T$, we should do the similarly needed transformation of multiplying $\hat{\alpha}_T$ by $T^{\frac{1}{2}}$. This is needed to make the expression converge in distribution.
+
+Then, we have:
+
+\begin{align*}
+    \begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T
+    \end{bmatrix}
+    \begin{bmatrix}
+        \hat{\alpha}_T\\ \hat{\rho}_T - \rho
+    \end{bmatrix} &= \left(\begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T
+    \end{bmatrix}\begin{bmatrix}
+        T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+    \end{bmatrix}\begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T
+    \end{bmatrix}\right)^{-1}
+    \left(\begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T
+    \end{bmatrix}\begin{bmatrix}
+        \sum \epsilon_t \\ \sum Y_{t-1}\epsilon_t
+    \end{bmatrix}\right)
+\end{align*}
+
+Let:
+
+\begin{align*}
+    \begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T
+    \end{bmatrix}\begin{bmatrix}
+        T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+    \end{bmatrix}\begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T
+    \end{bmatrix} &\xrightarrow{d} \Omega\\
+    \begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T
+    \end{bmatrix}\begin{bmatrix}
+        \sum \epsilon_t \\ \sum Y_{t-1}\epsilon_t
+    \end{bmatrix} &\xrightarrow{d} \mathcal{E}
+\end{align*}
+
+One could use the known asymptotic results to find the expressions for $\Omega$ and $\mathcal{E}$, and then use Slutsky to combine them:
+
+$$
+\hat{\rho}_T - \rho \xrightarrow{d} \left(\Omega^{-1}\mathcal{E}\right)_{2,1} = \frac{((W(1))^2 - 1)/2 - W(1)\int^1_0W(r) dr}{\int^1_0 [W(r)]^2 dr - (\int^1_0 W(r) dr)^2}
+$$
+
+Where the subscript denotes the row-column element of the matrix. By finding the values of $\Omega$ and $\mathcal{E}$, and doing the matrix multiplication, one should be able to see that the expression is equal to the given one.
+
+For the second item, recall that the standard error is:
+
+$$
+\hat{\sigma}_{\hat{\rho}_T} = \left(s^2_T
+\begin{bmatrix}
+    1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+    T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+\end{bmatrix}
+\begin{bmatrix}
+    1 \\ 1
+\end{bmatrix}\right)_{2,1}
+$$
+
+Obs: $s^2_T = \hat{V}[\epsilon_t]$. As we did before, lets multiply it by $T$:
+
+$$
+T \hat{\sigma}_{\hat{\rho}_T} = \left(s^2_T
+\begin{bmatrix}
+    1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+    T^\frac{1}{2} & 0 \\ 0 & T
+\end{bmatrix}
+\begin{bmatrix}
+    T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+\end{bmatrix}
+\begin{bmatrix}
+    T^\frac{1}{2} & 0 \\ 0 & T
+\end{bmatrix}
+\begin{bmatrix}
+    1 \\ 1
+\end{bmatrix}\right)_{2,1}
+$$
+
+Let $T \hat{\sigma}_{\hat{[\alpha ~ \rho]}_T} \xrightarrow{d} \Sigma$. Then, as we did in item 1., we join this expression with the one for $\hat{\rho}_T - \rho$, simplify the terms, and use Slutsky to combine the results:
+
+$$
+\hat{\rho}_T - \rho \xrightarrow{d} \left(\Sigma^{-1}\Omega^{-1}\mathcal{E}\right)_{2,1} = \frac{((W(1))^2 - 1)/2 - W(1)\int^1_0W(r) dr}{\left(\int^1_0 [W(r)]^2 dr - (\int^1_0 W(r) dr)^2\right)^\frac{1}{2}}
+$$
+
+By finding the values of $\Sigma$, and doing the matrix multiplication, one should be able to see that the expression is equal to the given one.
+
+
 
 \subsection*{Item 3.}
+
+Here we have a very similar setup. We need to also subtract the true $\alpha$:
+
+\begin{align*}
+    \begin{bmatrix}
+        \hat{\alpha}_T\\ \hat{\rho}_T
+    \end{bmatrix} &=
+    \begin{bmatrix}
+        T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+        \sum Y_{t-1} \\ \sum Y_{t-1}Y_T
+    \end{bmatrix}\\
+    \begin{bmatrix}
+        \hat{\alpha}_T - \alpha\\ \hat{\rho}_T - \rho
+    \end{bmatrix} &= \begin{bmatrix}
+        T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+        \sum \epsilon_t \\ \sum Y_{t-1}\epsilon_t
+    \end{bmatrix}
+\end{align*}
+
+Also, the convergence rates of the relevant terms changed, such that the new scaling matrix must be different. Then:
+
+\begin{align*}
+    \begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T^\frac{2}{3}
+    \end{bmatrix}\begin{bmatrix}
+        T & \sum Y_{t-1}\\ \sum Y_{t-1} & \sum Y^2_{t-1}
+    \end{bmatrix}\begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T^\frac{2}{3}
+    \end{bmatrix} &\xrightarrow{d} \Omega\\
+    \begin{bmatrix}
+        T^\frac{1}{2} & 0 \\ 0 & T^\frac{2}{3}
+    \end{bmatrix}\begin{bmatrix}
+        \sum \epsilon_t \\ \sum Y_{t-1}\epsilon_t
+    \end{bmatrix} &\xrightarrow{d} \mathcal{E}
+\end{align*}
+
+Then, joining these results using Slutsky:
+
+$$
+\begin{bmatrix}
+    T^\frac{1}{2} & 0 \\ 0 & T^\frac{2}{3}
+\end{bmatrix} \begin{bmatrix}
+    \hat{\alpha}_T - \alpha\\ \hat{\rho}_T - \rho
+\end{bmatrix} \xrightarrow{d} \Omega^{-1}\mathcal{E} \sim N\left(0,~ \sigma^2 \begin{bmatrix}
+    1 & \frac{\alpha}{2} \\ \frac{\alpha}{2} & \frac{\alpha^2}{3}
+\end{bmatrix}\right)
+$$
+
+By finding the values of $\Omega$ amd $\mathcal{E}$, and doing the matrix multiplication, one should be able to see that the expression is equal to the given one.
 
 
 
