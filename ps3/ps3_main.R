@@ -5,9 +5,10 @@ library(stargazer)
 library(vars)
 library(tidyverse)
 
-# Alternatively, try:
-#source("https://github.com/ricardo-semiao/task-econometrics2/blob/main/ps3/tslm.R?raw=TRUE")
+# Custom lm for time series functions (similar to {dynlm}):
 source("ps3/tslm.R")
+# If you're using this script in a standalone format, use:
+#source("https://github.com/ricardo-semiao/task-econometrics2/blob/main/ps3/tslm.R?raw=TRUE")
 
 stargazer_ps3 <- function(mods, preds, mses, ..., filename) {
   stargazer(mods,
@@ -51,9 +52,7 @@ models_q1 <- map(formulas, ~lm(formulate_tslm(.x), data_train))
 predictions_q1 <- map_dbl(models_q1, ~predict_tslm(.x, data))
 mses_q1 <- (data_test$Gdp - predictions_q1)^2
 
-stargazer_ps3(models_q1,
-  predictions_q1,
-  mses_q1,
+stargazer_ps3(models_q1, predictions_q1, mses_q1,
   dep.var.labels = "GDP Growth",
   label = glue("tb:ardl"),
   filename = "ps3/tables/ardl.tex"
@@ -67,18 +66,17 @@ data_var <- data %>%
   select(-Date) %>%
   na.omit()
 
-#labels <- paste0("VAR(", rep(1:3, each = 3), "): ", rep(colnames(data_var), 3))
 ps <- 1:3
 
 models_q2 <- map(ps, ~VAR(data_var, p = .x))
 
-predictions_q2 <- map(models_q2, ~ predict(.x, n.ahead = 1)$fcst %>% map_dbl(~.x[,"fcst"]))
-mses_q2 <- map(predictions_q2, ~(as.numeric(data_test[,-1]) - .x)^2)
+predictions_q2 <- map(models_q2, function(mod) {
+  map_dbl(predict(mod, n.ahead = 1)$fcst, ~.x[, "fcst"])
+})
+mses_q2 <- map(predictions_q2, ~(as.numeric(data_test[, -1]) - .x)^2)
 
 pwalk(list(models_q2, predictions_q2, mses_q2, ps), function(mod, preds, mses, p) {
-  stargazer_ps3(mod$varresult,
-    preds,
-    mses,
+  stargazer_ps3(mod$varresult, preds, mses,
     column.labels = colnames(data_var),
     dep.var.labels.include = FALSE,
     model.numbers = FALSE,
@@ -89,12 +87,10 @@ pwalk(list(models_q2, predictions_q2, mses_q2, ps), function(mod, preds, mses, p
 models_q2[[1]] <- VAR(data_var, p = 2) #{vars} gets confused with models created outside global env
 
 # Install from: devtools::install_github("ricardo-semiao/varutils")
-varutils::ggvar_irf(models_q2[[1]],
+varutils::ggvar_irf(models_q2[[1]], # the default is orthogonalization
   n.ahead = 10,
-  runs = 1000, # the default is orthogonalization
+  runs = 1000,
   facet = "ggh4x",
   args_facet = list(scales = "free_y", independent = "y")
 )
 ggsave(filename = "ps3/figures/irfs.png", width = 7, height = 6)
-
-
