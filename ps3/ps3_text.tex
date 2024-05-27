@@ -1,0 +1,102 @@
+% !TEX root = ps1_text.tex
+
+\documentclass[12pt]{article}
+
+% Geometry
+\usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=3cm]{geometry}
+
+% Font encoding
+\usepackage[utf8]{inputenc} % UTF-8 encoding
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{times}
+
+% Math packages
+\usepackage{amsmath} % Basic math symbols and environments
+\usepackage{amssymb} % Additional math symbols
+\usepackage{amsfonts} % Math fonts
+
+% Text packages
+\usepackage{parskip}
+\setlength{\parskip}{1em}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+}
+
+% Pictures
+\usepackage{graphicx}
+\usepackage{float}
+
+% Lists
+\usepackage{enumitem}
+\setlist[itemize]{itemsep = -0.5em, topsep = -0.5em}
+
+% Bibliography
+%\usepackage{cite}
+
+% Loops:
+\usepackage{pgffor}
+
+% Title and author
+\title{Econometrics II - Problem Set 3}
+\author{Ricardo Semião e Castro}
+\date{05/2024}
+
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Question 1}
+
+The results can be seen below.
+
+\input{tables/ardl.tex}
+
+Via the MSE, we can see that the model generates the best prediction is ... .
+
+
+\section*{Question 2}
+
+
+
+\section*{Question 3}
+
+
+
+\section*{Question 4}
+
+
+
+\section*{Question 5}
+
+
+
+\section*{Question 6}
+
+\subsection*{Item 1.}
+
+The results, for each model, can be seen below.
+
+\input{tables/var1.tex}
+\input{tables/var2.tex}
+\input{tables/var3.tex}
+
+
+\subsection*{Item 2.}
+
+The order was ..., because ... .
+
+The IRFs can be seen below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/irfs.png}
+\end{figure}
+
+About credibility, the results show that ... .
+
+
+\end{document}
