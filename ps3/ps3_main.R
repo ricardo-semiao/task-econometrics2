@@ -68,9 +68,14 @@ formulas <- list(
   Gdp ~ l(Gdp, 1:2)
 )
 
-models_q1 <- map(formulas, ~lm(formulate_tslm(.x), data_train))
+models_q1 <- map(formulas, \(.x) {
+  a <- reformulate_tslm(.x)
+  lm(a, data_train)
+})
 
-predictions_q1 <- map_dbl(models_q1, ~predict_tslm(.x, data))
+predictions_q1 <- map_dbl(models_q1, \(.x) {
+  predict_tslm(.x, data)
+})
 mses_q1 <- (data_test$Gdp - predictions_q1)^2
 
 stargazer_ps3(models_q1, "ps3/tables/ardl.tex", predictions_q1, mses_q1,
