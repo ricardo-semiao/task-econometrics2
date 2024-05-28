@@ -69,12 +69,12 @@ formulas <- list(
 )
 
 models_q1 <- map(formulas, \(.x) {
-  a <- reformulate_tslm(.x)
-  lm(a, data_train)
+  #a <- reformulate_tslm(.x)
+  dynlm(.x, data_train)
 })
 
 predictions_q1 <- map_dbl(models_q1, \(.x) {
-  predict_tslm(.x, data)
+  predict_tslm(.x, data_train)
 })
 mses_q1 <- (data_test$Gdp - predictions_q1)^2
 
