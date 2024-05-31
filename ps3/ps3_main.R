@@ -97,6 +97,7 @@ mses_q2 <- map(predictions_q2, ~(as.numeric(data_test[names(.x)]) - .x)^2)
 
 pwalk(list(models_q2, predictions_q2, mses_q2, ps), function(mod, preds, mses, p) {
   stargazer_ps3(mod$varresult, glue("ps3/tables/var_{p}.tex"), preds, mses,
+    title = glue("VAR({p})"),
     column.labels = colnames(data_var),
     dep.var.labels.include = FALSE,
     model.numbers = FALSE
