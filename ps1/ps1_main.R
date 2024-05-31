@@ -1,26 +1,20 @@
-
 # Data and Functions ------------------------------------------------------
 
-library(tidyverse)
-library(stargazer)
-library(furrr)
 library(glue)
+library(furrr)
+library(tidyverse)
+box::use(../util_functions[
+  prettify_model_names,
+  output_stargazer,
+  output_ggplot
+]) # Or, run:
+#source("https://github.com/ricardo-semiao/task-econometrics2/blob/main/util_functions.R?raw=TRUE")
 
 set.seed(20240513)
-
 plan(multisession, workers = 7)
 
 theme_set(theme_bw())
 pal <- c("darkgreen", "darkorange")
-
-
-prettify_model_names <- function(x) {
-  x %>%
-    str_replace("([a-z]+)([0-9]+_*[0-9]*)*", "\\1(\\2)") %>%
-    str_replace("_", ",") %>%
-    str_to_upper() %>%
-    set_names(x)
-}
 
 
 get_prob_conv_data <- function(x, thresholds, coefs) {
@@ -126,48 +120,47 @@ pretty_names <- prettify_model_names(names(models))
 
 
 # Results:
-#i = 1; inds = list(1:4, 5:8)[[i]]
-iwalk(list(`1_to_4` = 1:4, `5_to_8` = 5:8), function(inds, i) {
-  stargazer(models[inds],
-            type = "latex",
-            dep.var.caption = "",
-            column.labels = pretty_names[inds],
-            model.numbers = FALSE,
-            report = "vcsp",
-            omit.stat = "aic",
-            add.lines = list(
-              c("AIC", map_dbl(models, ~ round(AIC(.x) ,3))),
-              c("BIC", map_dbl(models, ~ round(BIC(.x) ,3)))
-            )
-  ) %>%
-    capture.output() %>%
-    writeLines(glue("ps1/tables/models_{i}.tex"))
+iwalk(list(`1_to_4` = 1:4, `5_to_8` = 5:8), function(inds, name) {
+  output_stargazer(models[inds], "ps1/tables/models_{name}.tex",
+    column.labels = pretty_names[inds],
+    dep.var.caption = "",
+    model.numbers = FALSE,
+    report = "vcsp",
+    omit.stat = "aic",
+    add.lines = list(
+      c("AIC", map_dbl(models, ~ round(AIC(.x) ,3))),
+      c("BIC", map_dbl(models, ~ round(BIC(.x) ,3)))
+  ))
 })
-
-
 
 predictions <- imap(models, function(mod, name) {
   predict(mod, n.ahead = 10) %>%
     as_tibble() %>%
-    mutate(Data = max(data$Data) + 1:10, value = "Prediction", PIB = pred, pred = NULL)
+    mutate(
+      Data = max(data$Data) + 1:10,
+      value = "Prediction",
+      PIB = pred,
+      pred = NULL
+    )
 })
 
 iwalk(predictions, function(pred, name) {
-  graph <- ggplot(data, aes(Data, PIB)) +
+  plot <- ggplot(data, aes(Data, PIB)) +
     geom_line() +
     geom_line(data = pred,
-              linetype = "dashed", color = pal[1], linewidth = 0.75
+      linetype = "dashed", color = pal[1], linewidth = 0.75
     ) +
     geom_ribbon(data = pred, aes(ymin = PIB - se, ymax = PIB + se),
-                linetype = "dashed", alpha = 0.2, fill = pal[2], color = pal[2], linewidth = 0.75
+      linetype = "dashed", alpha = 0.2, fill = pal[2], color = pal[2], linewidth = 0.75
     ) +
     labs(
       title = glue("Prediction of PIB - Model {pretty_names[name]}"),
       x = "Year"
     )
   
-  ggsave(glue("ps1/figures/{name}_pred.png"), graph, width = 6, height = 3)
+  output_ggplot("ps1/figures/{name}_pred.png", 6, 3, plot)
 })
+
 
 
 # Question 2 --------------------------------------------------------------
@@ -251,8 +244,8 @@ all_results <- imap(parameters, function(params, p_name) {
         test_size = get_test_size_data(mc_results_agg$reject)
       )
     },
-    .options = furrr_options(seed = TRUE),
-    .progress = TRUE
+      .options = furrr_options(seed = TRUE),
+      .progress = TRUE
     )
     
     transpose(data_per_size) %>% map(~ do.call(rbind, .x))
@@ -278,9 +271,7 @@ if (FALSE) {
   
   iwalk(all_results, function(p, p_name) {
     iwalk(p$plots, function(g, g_name) {
-      ggsave(glue("ps1/figures/{p_name}_{g_name}.png"), g, width = 6, height = 4.5)
+      output_ggplot("ps1/figures/{p_name}_{g_name}.png", 6, 4.5, g)
     })
   })
 }
-
-

@@ -1,20 +1,26 @@
-
-
 # Data and Functions ------------------------------------------------------
 
-library(tidyverse)
 library(glue)
 library(patchwork)
 library(furrr)
+library(tidyverse)
+box::use(../util_functions[
+  output_dftest,
+  output_ggplot
+]) # Or, run:
+#source("https://github.com/ricardo-semiao/task-econometrics2/blob/main/util_functions.R?raw=TRUE")
+
 
 set.seed(20240513)
 plan(multisession, workers = 7)
+
 theme_set(theme_bw())
 
 
 
 # Question 2 --------------------------------------------------------------
 
+# Sequential version:
 mc_reps <- 10000
 sample_size <- 10000
 t <- 1:sample_size
@@ -58,7 +64,6 @@ colMeans(do.call(rbind, rejections))
 data <- read.csv("ps2/data/corn-production-land-us.csv") %>%
   rename(Hectares = 4, Production = 5)
 
-
 g_hist <- ggplot(data, aes(Year, Production)) +
   geom_line() +
   labs(title = "Historical Values")
@@ -69,27 +74,6 @@ g_acf <- varutils::ggvar_acf(data, series = "Production", lag.max = 50) +
   labs(title = "Auto-Correlation")
 
 g_hist + g_acf + plot_annotation("US Corn Production")
-ggsave(filename = "ps2/figures/corn_prod.png", width = 6, height = 3.5)
+output_ggplot("ps2/figures/corn_prod.png", 6, 3.5)
 
-
-test_result <- aTSA::adf.test(data$Production)
-
-test_result_pretty <- test_result %>%
-  imap_dfr(~ tibble(type = .y, as_tibble(.x))) %>%
-  mutate(
-    p.value = glue("({round(p.value, 2)})"),
-    ADF = round(ADF, 2)
-  ) %>%
-  unite(Statistic, ADF, p.value, sep = "\n") %>%
-  pivot_wider(names_from = type, values_from = "Statistic") %>%
-  set_names("Lag", glue("Type {1:3}"))
-
-stargazer::stargazer(test_result_pretty,
-    summary = FALSE,
-    rownames = FALSE
-  ) %>%
-  capture.output() %>%
-  writeLines("ps2/tables/adf_test.tex")
-
-# Other functions: tseries::adf.test, urca::ur.df, bootUR::adf, CADFtest::CADFtest, fUInitRoots::adfTest
-
+output_dftest(data$Production, "ps2/tables/adf_test.tex")
