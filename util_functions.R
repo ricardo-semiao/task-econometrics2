@@ -5,7 +5,7 @@ box::use(
   tidyr[...],
   purrr[...],
   stringr[...],
-  rlang[is_symbol],
+  rlang[...],
   ggplot2[ggsave, last_plot],
   stargazer[stargazer],
   glue[glue]
@@ -102,38 +102,28 @@ expr_collapse <- function(expr, collapse = "+") {
   reduce(expr, ~as.call(list(sym(collapse), .x, .y)))
 }
 
-add_lags <- function(call_short, order = TRUE) {
-  lags <- eval(call_short[[3]]) %||% 1
-  if (order) lags <- lags[order(lags)]
-  call_long_items <- map(lags, ~ expr(lag(!!call_short[[2]], !!.x)))
-  expr_collapse(call_long_items)
+l <- function(x, lags = 1) {
+  map(lags, \(lag) expr(lag({{x}}, lag)))
 }
 
-add_diffs <- function(call_short, order = TRUE) {
-  lags <- eval(call_short[[3]]) %||% 1
-  if (order) lags <- lags[order(lags)]
-  call_long_items <- map(lags, ~ expr(diff(!!call_short[[2]], !!.x)))
-  expr_collapse(call_long_items)
+d <- function(x, lags = 1) {
+  map(lags, \(lag) expr(diff({{x}}, lag)))
 }
 
-add_trend <- function(call_short) stop("t() is not yet implemented")
+t <- function(...) stop("t() is not yet implemented")
 
-add_season <- function(call_short) stop("s() is not yet implemented")
+s <- function(...) stop("s() is not yet implemented")
 
-add_harmon <- function(call_short, order = TRUE) {
-  multiples <- eval(call_short[[2]]) %||% 1
-  if (order) multiples <- multiples[order(multiples)]
-  mode <- eval(call_short[[3]]) %||% "both"
-  
+h <- function(multiples, mode = "both") {
   sin_items <- map(multiples, ~ expr(sin(!!.x * 2 * pi * !!index(!!formula[[1]]))))
   cos_items <- map(multiples, ~ expr(cos(!!.x * 2 * pi * !!index(!!formula[[1]]))))
+  
   switch(mode,
-         "both" = c(expr_collapse(sin_items), expr_collapse(cos_items)),
-         "sin" = expr_collapse(sin_items),
-         "cos" = expr_collapse(cos_items)
+   "both" = c(expr_collapse(sin_items), expr_collapse(cos_items)),
+   "sin" = expr_collapse(sin_items),
+   "cos" = expr_collapse(cos_items)
   )
 }
-
 
 flatten_formula_rhs <- function(formula, reverse = TRUE) {
   formula_rhs_flat <- list()
@@ -153,26 +143,20 @@ flatten_formula_rhs <- function(formula, reverse = TRUE) {
   set_names(formula_rhs_flat, as.character(formula_rhs_flat))
 }
 
+
 #' Convert Shorthands on dynlm Style Formula
 #' @export
-reformulate_tslm <- function(formula, reverse = TRUE, order = TRUE) {
+reformulate_tslm <- function(formula, reverse = TRUE) {
   formula_rhs_flat <- flatten_formula_rhs(formula, reverse)
   
-  formula_rhs_items <- map(formula_rhs_flat, function(call) {
-    if (is_symbol(call)) return(call)
-    switch(as.character(call[[1]]),
-           "l" = add_lags(call, order = order),
-           "d" = add_diffs(call),
-           "t" = add_trend(call),
-           "s" = add_season(call),
-           "h" = add_harmon(call),
-           call
-    )
-  })
-  
-  formula[[3]] <- expr_collapse(formula_rhs_items)
+  formula[[3]] <- map(formula_rhs_flat, function(call) {
+    if (is_symbol(call)) call else expr_collapse(!!call)
+  }) %>%
+    expr_collapse
+
   formula
 }
+
 
 #' Predict dynlm Style Models
 #' @export
