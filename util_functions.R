@@ -12,18 +12,14 @@ box::use(
 
 # Functions for Pretty Output ---------------------------------------------
 
-eval_identifiers <- function(filename, label, env_call) {
+glue_identifiers <- function(filename, label, env_call) {
   filename <- glue(filename, .envir = env_call)
   
-  if (isFALSE(label)) {
-    label <- NULL
+  if (is.null(label)) {
+    label <- gsub("^.+/(.+)\\..+$", "tb:\\1", filename)
+    warning(glue("No label supplied, using '{label}'"), call. = FALSE)
   } else {
-    if (is.null(label)) {
-      label <- gsub("^.+/(.+)\\..+$", "tb:\\1", filename)
-      warning(glue("No label supplied, using '{label}'"), call. = FALSE)
-    } else {
-      label <- glue(label, .envir = env_call)
-    }
+    label <- if (isFALSE(label)) NULL else glue(label, .envir = env_call)
   }
   
   list(filename = filename, label = label)
@@ -44,7 +40,7 @@ prettify_model_names <- function(x) {
 #' Save aTSA's DF Test as Latex File
 #' @export
 output_dftest <- function(data, filename, label = NULL, ...) {
-  id <- eval_identifiers(filename, label, parent.frame(1))
+  id <- glue_identifiers(filename, label, parent.frame(1))
   
   pretty_dftest <- aTSA::adf.test(data, ..., output = FALSE) %>%
     imap_dfr(~ tibble(type = .y, as_tibble(.x))) %>%
@@ -73,7 +69,7 @@ output_dftest <- function(data, filename, label = NULL, ...) {
 #' Save stargazer as Latex File
 #' @export
 output_stargazer <- function(x, filename, label = NULL, ...) {
-  id <- eval_identifiers(filename, label, parent.frame(1))
+  id <- glue_identifiers(filename, label, parent.frame(1))
   
   x %>%
     stargazer(
