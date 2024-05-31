@@ -72,12 +72,12 @@ output_dftest <- function(data, filename, label = NULL, ...) {
 
 #' Save stargazer as Latex File
 #' @export
-output_stargazer <- function(x, filename, label = "", ...) {
+output_stargazer <- function(x, filename, label = NULL, ...) {
   id <- eval_identifiers(filename, label, parent.frame(1))
   
   x %>%
     stargazer(
-      out.header = FALSE,
+      header = FALSE,
       table.placement = "H",
       label = id$label,
       ...
