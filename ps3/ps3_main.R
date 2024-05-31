@@ -69,8 +69,8 @@ formulas <- list(
 )
 
 models_q1 <- map(formulas, \(.x) {
-  #a <- reformulate_tslm(.x)
-  dynlm(.x, data_train)
+  f <- reformulate_tslm(.x)
+  lm(f, data_train)
 })
 
 predictions_q1 <- map_dbl(models_q1, \(.x) {
