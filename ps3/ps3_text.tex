@@ -51,29 +51,80 @@
 
 \maketitle
 
+\section*{Exploratory Data Analysis}
+
+This section is dedicated to the exploratory analysis made for questions 1. and 4.
+
+We can see the time series values below. Exchange had a clear trend, so it was detrended using a HPfilter with $\lambda = 100$ for yearly data.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/explore_values.png}
+\end{figure}
+
+It is also interesting to consider the plots of the ACF of the series.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/explore_acf.png}
+\end{figure}
+
+We can see that Exchange presents a trend, and strong memory. With this motivation, I ran the ADF test for the series. The results can be seen below.
+
+\input{tables/dftest_exchange.tex}
+\input{tables/dftest_gdp.tex}
+\input{tables/dftest_ipc.tex}
+
+Table 1 indicates that the series Exchange  probably is non-stationary, while the other two are stationary. So, it was probably more suited to do a differencing, instead of a detrending. For simplicity, the variable was included with trend in the models.
+
+
 
 \section*{Question 1}
 
-The results can be seen below.
+The results can be seen below. The row 'predictions' and 'MSE' are related to the prediction for 2020.
 
 \input{tables/ardl.tex}
 
-Via the MSE, we can see that the model generates the best prediction is ... .
+Via the MSE, we can see that the model generates the best prediction is from model 3. This makes sense, given that it is the most complex model, while seeming to be not too complex, not suffering from overfitting.
+
 
 
 \section*{Question 2}
+
+Let $\phi_j$ denote the vector of coefficients of each lag $j$ in the $VAR(p)$ model, and $\epsilon_t$ the error term. Then, we can write the model and take the expectancy of both sides:
+
+$$
+E[Y_t] = c + \phi_1E[Y_{t-1}] + \dots + \phi_pE[Y_{t-p}] + E[\epsilon_t]
+$$
+
+As $\{Y_t\}$ is covariance-stationary, $E[Y_{t}] = E[Y_{t-1}] = \dots = E[Y_{t-p}]$ Denote this value by $\mu$. Also $E[\epsilon_t] = 0$. So, we have:
+
+\begin{align*}
+    &\mu = c + \phi_1\mu + \dots + \phi_p\mu\\
+    &(I - \phi_1 - \dots - \phi_p)\mu = c\\
+    &\mu = (I - \phi_1 - \dots - \phi_p)^{-1}c
+\end{align*}
+
 
 
 
 \section*{Question 3}
 
+First, note that $\Gamma_{-j} = E[(Y_t - \mu)(Y_{t+j} - \mu)']$.
 
+Then:
 
-\section*{Question 4}
+\begin{align*}
+    \Gamma'_j &= E[(Y_{t-j} - \mu)(Y_t - \mu)']\\
+    &= E[(Y_{t-j + j} - \mu)(Y_{t + j} - \mu)']\\
+    &= \Gamma_{-j}
+\end{align*}
 
+The second line step came from ${Y_t}$ being covariance-stationary, "the window doesn't matter", i.e.:
 
-
-\section*{Question 5}
+$$
+E[(Y_{t-j + k} - \mu)(Y_{t + k} - \mu)'] = E[(Y_{t-j} - \mu)(Y_{t} - \mu)'],~~ \forall k \in \mathbb{N}
+$$
 
 
 
@@ -81,25 +132,33 @@ Via the MSE, we can see that the model generates the best prediction is ... .
 
 \subsection*{Item 1.}
 
-The results, for each model, can be seen below.
+The results, for each model, can be seen below. I used the detrended version of Exchange.
 
 \input{tables/var_1.tex}
 \input{tables/var_2.tex}
 \input{tables/var_3.tex}
 
+Comparing the predictions, $VAR(1)$ yielded $0.23$ (MSE of $16.92$), $VAR(2)$ yielded $0.72$ (MSE of $21.19$), and $VAR(3)$ yielded $0.8$ (MSE of $21.88$). $VAR(1)$ was the best.
+
+For yearly data, we don't normally need to use too many lags to capture the dynamic of the problem, specially when using multiple series. This might be why $VAR(1)$ had the better prevision.
+
 
 \subsection*{Item 2.}
 
-The order was ..., because ... .
+The chosen order was (Ipc, Gdp, Exchange). The choice lies in the analysis of the level of rigidity of each variable. We have lots of empirical evidence to consider price rigidities, such that GDP should respond to IPC. The inflation could be set by the BC given the GDP, or react to the state of the economy, but this shouldn't be too intense, and one could argue relatively exogenous shocks on inflation. Lastly, the exchange rate should be the most endogenous variable, as the value of the currency is set by expectations, which relate to both GDP and IPC, and propagate quickly, given the high liquidity of the exchange market.
 
-The IRFs can be seen below.
+The IRFs with the Cholesky decomposition in the order above can be seen below.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/irfs.png}
 \end{figure}
 
-About credibility, the results show that ... .
+The results are not really credible. We have no statistically significant response of GDP given a shock of inflation, which contradicts our assumption of price rigidities. The exchange rate also doesn't present significant responses to IPC and GDP.
+
+These poor results are not surprising, given the low quality of the data and the decomposition assumptions. For the data, there have been many structural breaks in Brazil's economy since 1949, as the exploratory analysis showed. There have been the military dictatorship, hyperinflation, "the economic miracle" the Real plan, etc. All of this makes a fixed-coefficient VAR very unreliable.
+
+As for the assumptions, as stated before, are very ambiguous, and there are ways to justify IPC also responding to GDP via BC's choice and other market mechanisms. Also, not always the exchange market is so liquid.
 
 
 \end{document}
