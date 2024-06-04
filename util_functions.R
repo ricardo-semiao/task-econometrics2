@@ -86,7 +86,7 @@ output_stargazer <- function(x, filename, label = NULL, ...) {
 #' Save ggplot Picture
 #' @export
 output_ggplot <- function(filename, width, height, plot = last_plot(), ...) {
-  id <- eval_identifiers(filename, FALSE, parent.frame(1))
+  id <- glue_identifiers(filename, FALSE, parent.frame(1))
   ggsave(id$filename, plot = plot, width = width, height = height)
 }
 
