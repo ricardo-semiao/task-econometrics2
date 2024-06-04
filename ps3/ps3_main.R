@@ -53,7 +53,8 @@ output_ggplot("ps3/figures/explore_ccf.png", 5, 5)
 
 imap(data[c("Exchange", "Gdp", "Ipc")], function(x, name) {
   output_dftest(ts(na.omit(x)), "ps3/tables/dftest_{str_to_lower(name)}.tex",
-    nlag = 3
+    nlag = 3,
+    caption = glue("ADF Test - {name}")
   )
 })
 
@@ -83,7 +84,7 @@ stargazer_ps3(models_q1, "ps3/tables/ardl.tex", predictions_q1, mses_q1,
 # Question 2 --------------------------------------------------------------
 
 data_var <- data_train %>%
-  select(-Date, -Exchange) %>%
+  select(c(Gdp, Ipc, Exchange)) %>%
   na.omit()
 
 ps <- 1:3 %>% set_names(glue("var_{.}"))
