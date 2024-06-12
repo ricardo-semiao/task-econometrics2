@@ -39,13 +39,13 @@ prettify_model_names <- function(x) {
 
 #' Save aTSA's DF Test as Latex File
 #' @export
-output_dftest <- function(data, filename, label = NULL, ...) {
+output_dftest <- function(data, filename, label = NULL, nlag = NULL, pval = TRUE, ...) {
   id <- glue_identifiers(filename, label, parent.frame(1))
   
-  pretty_dftest <- aTSA::adf.test(data, ..., output = FALSE) %>%
+  pretty_dftest <- aTSA::adf.test(data, nlag = nlag, output = FALSE) %>%
     imap_dfr(~ tibble(type = .y, as_tibble(.x))) %>%
     mutate(
-      p.value = glue("({round(p.value, 2)})"),
+      p.value = if (pval) {glue("({round(p.value, 2)})")} else {""},
       ADF = round(ADF, 2)
     ) %>%
     unite(Statistic, ADF, p.value, sep = "\n") %>%
@@ -57,7 +57,8 @@ output_dftest <- function(data, filename, label = NULL, ...) {
       header = FALSE,
       summary = FALSE,
       rownames = FALSE,
-      label = id$label
+      label = id$label,
+      ...
     ) %>%
     capture.output() %>%
     writeLines(id$filename)

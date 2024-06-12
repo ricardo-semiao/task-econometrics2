@@ -51,10 +51,10 @@ varutils::ggvar_ccf_grid(data[-c(1,2)],
 )
 output_ggplot("ps3/figures/explore_ccf.png", 5, 5)
 
-imap(data[c("Exchange", "Gdp", "Ipc")], function(x, name) {
+iwalk(data[c("Exchange", "Gdp", "Ipc")], function(x, name) {
   output_dftest(ts(na.omit(x)), "ps3/tables/dftest_{str_to_lower(name)}.tex",
     nlag = 3,
-    caption = glue("ADF Test - {name}")
+    caption = unclass(glue("ADF Test - {name}"))
   )
 })
 
