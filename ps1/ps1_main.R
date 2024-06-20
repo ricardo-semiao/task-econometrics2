@@ -1,5 +1,7 @@
 # Data and Functions ------------------------------------------------------
 
+try(setwd("ps1"), silent = TRUE)
+
 library(glue)
 library(furrr)
 library(tidyverse)
@@ -100,7 +102,7 @@ plot_test_size <- function(x, model_name, coefs) {
 # Question 1 --------------------------------------------------------------
 
 # Setup:
-data <- read_csv("ps1/data/data_gdp_brazil.csv") %>%
+data <- read_csv("data/data_gdp_brazil.csv") %>%
   rename(PIB = 2)
 
 orders <- list(
@@ -121,7 +123,7 @@ pretty_names <- prettify_model_names(names(models))
 
 # Results:
 iwalk(list(`1_to_4` = 1:4, `5_to_8` = 5:8), function(inds, name) {
-  output_stargazer(models[inds], "ps1/tables/models_{name}.tex",
+  output_stargazer(models[inds], "tables/models_{name}.tex",
     column.labels = pretty_names[inds],
     dep.var.caption = "",
     model.numbers = FALSE,
@@ -158,7 +160,7 @@ iwalk(predictions, function(pred, name) {
       x = "Year"
     )
   
-  output_ggplot("ps1/figures/{name}_pred.png", 6, 3, plot)
+  output_ggplot("figures/{name}_pred.png", 6, 3, plot)
 })
 
 
@@ -267,11 +269,11 @@ all_results <- imap(parameters, function(params, p_name) {
 })
 
 if (FALSE) {
-  saveRDS(all_results, "ps1/data/simulation_results.rds")
+  saveRDS(all_results, "data/simulation_results.rds")
   
   iwalk(all_results, function(p, p_name) {
     iwalk(p$plots, function(g, g_name) {
-      output_ggplot("ps1/figures/{p_name}_{g_name}.png", 6, 4.5, g)
+      output_ggplot("figures/{p_name}_{g_name}.png", 6, 4.5, g)
     })
   })
 }

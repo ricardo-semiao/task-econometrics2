@@ -1,5 +1,7 @@
 # Packages and Functions --------------------------------------------------
 
+try(setwd("ps3"), silent = TRUE)
+
 library(glue)
 library(vars)
 library(tidyverse)
@@ -22,7 +24,7 @@ stargazer_ps3 <- function(mods, filename, preds, mses, ...) {
 
 # Data and Exploratory Analisis -------------------------------------------
 
-data <- read_csv("ps3/data/data_brazil.csv") %>%
+data <- read_csv("data/data_brazil.csv") %>%
   set_names("Date", "Gdp", "Exchange", "Ipc") %>%
   slice_head(n = -1)
 
@@ -38,21 +40,21 @@ data_test <- filter(data, Date == 2020)
 varutils::ggvar_values(data[-1],
   args_facet = list(scale = "free_y")
 )
-output_ggplot("ps3/figures/explore_values.png", 5, 4)
+output_ggplot("figures/explore_values.png", 5, 4)
 
 varutils::ggvar_acf(data[-c(1,5)],
   args_facet = list(scale = "free_y"),
   na.action = na.pass
 )
-output_ggplot("ps3/figures/explore_acf.png", 5, 3)
+output_ggplot("figures/explore_acf.png", 5, 3)
 
 varutils::ggvar_ccf_grid(data[-c(1,2)],
   na.action = na.pass
 )
-output_ggplot("ps3/figures/explore_ccf.png", 5, 5)
+output_ggplot("figures/explore_ccf.png", 5, 5)
 
 iwalk(data[c("Exchange", "Gdp", "Ipc")], function(x, name) {
-  output_dftest(ts(na.omit(x)), "ps3/tables/dftest_{str_to_lower(name)}.tex",
+  output_dftest(ts(na.omit(x)), "tables/dftest_{str_to_lower(name)}.tex",
     nlag = 3,
     caption = unclass(glue("ADF Test - {name}"))
   )
@@ -74,7 +76,7 @@ models_q1 <- map(formulas, ~lm(formulate_tslm(.x), data_train))
 predictions_q1 <- map_dbl(models_q1, ~predict_tslm(.x, data))
 mses_q1 <- (data_test$Gdp - predictions_q1)^2
 
-stargazer_ps3(models_q1, "ps3/tables/ardl.tex", predictions_q1, mses_q1,
+stargazer_ps3(models_q1, "tables/ardl.tex", predictions_q1, mses_q1,
   dep.var.labels = "GDP Growth",
   label = "tb:ardl"
 )
@@ -97,7 +99,7 @@ predictions_q2 <- map(models_q2, function(mod) {
 mses_q2 <- map(predictions_q2, ~(as.numeric(data_test[names(.x)]) - .x)^2)
 
 pwalk(list(models_q2, predictions_q2, mses_q2, ps), function(mod, preds, mses, p) {
-  stargazer_ps3(mod$varresult, glue("ps3/tables/var_{p}.tex"), preds, mses,
+  stargazer_ps3(mod$varresult, glue("tables/var_{p}.tex"), preds, mses,
     title = glue("VAR({p})"),
     column.labels = colnames(data_var),
     dep.var.labels.include = FALSE,
@@ -114,4 +116,4 @@ varutils::ggvar_irf(models_q2[[2]], # the default is orthogonalization
   facet = "ggh4x",
   args_facet = list(scales = "free_y", independent = "y")
 )
-output_ggplot("ps3/figures/irfs.png", 7, 6)
+output_ggplot("figures/irfs.png", 7, 6)

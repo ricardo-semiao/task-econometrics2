@@ -1,5 +1,7 @@
 # Data and Functions ------------------------------------------------------
 
+try(setwd("ps2"), silent = TRUE)
+
 library(glue)
 library(patchwork)
 library(furrr)
@@ -61,7 +63,7 @@ colMeans(do.call(rbind, rejections))
 
 # Question 4 --------------------------------------------------------------
 
-data <- read.csv("ps2/data/corn-production-land-us.csv") %>%
+data <- read.csv("data/corn-production-land-us.csv") %>%
   rename(Hectares = 4, Production = 5)
 
 g_hist <- ggplot(data, aes(Year, Production)) +
@@ -74,6 +76,6 @@ g_acf <- varutils::ggvar_acf(data, series = "Production", lag.max = 50) +
   labs(title = "Auto-Correlation")
 
 g_hist + g_acf + plot_annotation("US Corn Production")
-output_ggplot("ps2/figures/corn_prod.png", 6, 3.5)
+output_ggplot("figures/corn_prod.png", 6, 3.5)
 
-output_dftest(data$Production, "ps2/tables/adf_test.tex")
+output_dftest(data$Production, "tables/adf_test.tex")
