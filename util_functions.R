@@ -39,7 +39,8 @@ prettify_model_names <- function(x) {
 
 #' Save aTSA's DF Test as Latex File
 #' @export
-output_dftest <- function(data, filename, label = NULL, nlag = NULL, pval = TRUE, ...) {
+output_dftest <- function(data, filename,
+  label = NULL, nlag = NULL, pval = TRUE, index = TRUE, ...) {
   id <- glue_identifiers(filename, label, parent.frame(1))
   
   pretty_dftest <- aTSA::adf.test(data, nlag = nlag, output = FALSE) %>%
@@ -50,7 +51,10 @@ output_dftest <- function(data, filename, label = NULL, nlag = NULL, pval = TRUE
     ) %>%
     unite(Statistic, ADF, p.value, sep = "\n") %>%
     pivot_wider(names_from = type, values_from = "Statistic") %>%
-    set_names("Lag", glue("Type {1:3}"))
+    `[`(index[[1]], c(1, 1 + index[[2]])) %>%
+    set_names("Lag", glue("Type {1:3}")[index[[2]]])
+    
+  print(pretty_dftest)
 
   pretty_dftest %>%
     stargazer(
@@ -62,8 +66,6 @@ output_dftest <- function(data, filename, label = NULL, nlag = NULL, pval = TRUE
     ) %>%
     capture.output() %>%
     writeLines(id$filename)
-  
-  print(pretty_dftest)
 }
 
 

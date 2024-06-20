@@ -4,7 +4,10 @@ try(setwd("ps4"), silent = TRUE)
 
 library(glue)
 library(tidyverse)
-box::use(../util_functions[output_dftest]) # Or, run:
+box::use(../util_functions[
+  output_dftest,
+  output_ggplot
+]) # Or, run:
 #source("https://github.com/ricardo-semiao/task-econometrics2/blob/main/util_functions.R?raw=TRUE")
 
 theme_set(theme_bw())
@@ -30,17 +33,19 @@ data <- full_join(data_brazil, data_usa, by = "Date") %>%
 
 # Acording to PPP, $g_{exchange} = g_{price}/g_{price*}$, so
 #$ln g_{exchange} = ln g_{price} - ln g_{price*}$, and:
-data$Z <- t(c(1, -1, 1)) %*% t(select(data, -Date)) %>% as.vector()
+data$Z <- t(c(-1, 1, -1)) %*% t(select(data, -Date)) %>% as.vector()
 
 
 varutils::ggvar_values_colored(data, index = data$Date)
+output_ggplot("figures/historic.png", 5, 3.5)
 
 
 iwalk(select(data, -Date), function(x, name) {
   cat(glue("\n\n{name}:\n\n"))
   output_dftest(ts(na.omit(x)), "tables/dftest_{str_to_lower(name)}.tex",
-    nlag = 3,
-    caption = unclass(glue("ADF Test - {name}"))
+    nlag = 4,
+    index = list(4, 1:2),
+    title = unclass(glue("ADF Test - {name}"))
   )
 })
 
@@ -48,16 +53,17 @@ iwalk(select(data, -Date), function(x, name) {
 
 # Question 2 --------------------------------------------------------------
 
-coint_vecs <- map(colnames(data)[-1], function(col_name) {
-  data_mod <- select(data, -Date) %>%
+coint_vecs <- map(colnames(select(data, -Date, -Z)), function(col_name) {
+  data_mod <- select(data, -Date, -Z) %>%
     relocate(all_of(col_name), .before = 1)
   
   mod <- lm(as.formula(glue("{col_name} ~ .")), data_mod)
   
   output_dftest(ts(na.omit(mod$residuals)),
     "tables/po_{str_to_lower(col_name)}.tex",
-    nlag = 3,
-    caption = unclass(glue("PO Test - {col_name}")),
+    nlag = 4,
+    index = list(4, 1),
+    title = unclass(glue("PO Test - {col_name}")),
     pval = FALSE
   )
   
@@ -79,7 +85,7 @@ coint_vecs %>%
 
 # Question 3 --------------------------------------------------------------
 
-test_jo <- urca::ca.jo(data[,-1],
+test_jo <- urca::ca.jo(select(data, -Date, -Z),
   ecdet = "none",
   type  = "eigen",
   K = 2,
