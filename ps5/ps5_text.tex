@@ -1,0 +1,122 @@
+% !TEX root = ps5_text.tex
+
+\documentclass[12pt]{article}
+
+% Geometry
+\usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=3cm]{geometry}
+
+% Font encoding
+\usepackage[utf8]{inputenc} % UTF-8 encoding
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{times}
+
+% Math packages
+\usepackage{amsmath} % Basic math symbols and environments
+\usepackage{amssymb} % Additional math symbols
+\usepackage{amsfonts} % Math fonts
+
+% Text packages
+\usepackage{parskip}
+\setlength{\parskip}{1em}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+}
+
+% Pictures
+\usepackage{graphicx}
+\usepackage{float}
+
+% Lists
+\usepackage{enumitem}
+\setlist[itemize]{itemsep = -0.5em, topsep = -0.5em}
+
+% Bibliography
+%\usepackage{cite}
+
+% Loops:
+\usepackage{pgffor}
+
+% Extra commands:
+\input{../style.tex}
+
+% Title and author
+\title{Econometrics II - Problem Set 5}
+\author{Ricardo Semião e Castro}
+\date{06/2024}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 1}
+
+\subsection*{Item 1.}
+
+The gradient is:
+
+$$
+E[\left(-\frac{1}{\lambda^2} ~~~~ -2\frac{X}{\lambda^2}\right)']
+$$
+$$
+\left(-\frac{1}{\lambda^2} ~~~~ -2\frac{E[X]}{\lambda^2}\right)'
+$$
+
+
+\subsection*{Item 2.}
+The results can be seen below:
+
+\input{tables/gmm_exp.tex}
+
+
+
+\section*{Question 2}
+
+\subsection*{Item 1.}
+We can see that the exogeneity assumption does not hold, $E[Y_{t-1}U_t] \neq 0$:
+
+$$
+E[Y_{t-1}U_t] = E[(\phi_1 Y_{t-2} + U_{t-1} )U_t] = E[(\phi^2_1 Y_{t-3} + \phi_1U_{t-2} + U_{t-1})U_t]
+$$
+$$
+E[Y_{t-1}U_t] = \theta_2(\phi_1 + \theta_1) + \theta_1 \neq 0
+$$
+
+\subsection*{Item 2.}
+We can see that the exogeneity assumption does not hold, $E[Y_{t-2}U_t] \neq 0$:
+
+$$
+E[Y_{t-2}U_t] = E[(\phi_1 Y_{t-3} + \epsilon_{t-2} + \theta_1\epsilon_{t-3} + \theta_2\epsilon_{t-4})(\theta_1\epsilon_{t-1} + \theta_2\epsilon_{t-2})] = \theta_2 \neq 0
+$$
+
+
+\subsection*{Item 4.}
+The results can be seen below:
+
+\input{tables/gmm_arma.tex}
+
+
+
+
+\section*{Question 3}
+
+\subsection*{Item 1., 2., and 3.}
+In the code.
+
+
+\subsection*{Item 4.}
+The results can be seen below:
+
+\input{tables/gmm_capm.tex}
+
+
+\subsection*{Item 5.}
+The joint hypothesis is every intecept having a null value of $0$ de DFs are $(244, 3)$. The results are as below:
+
+\input{tables/test_capms.tex}
+
+With the p-value of $0.394$, we do not reject the null.
+
+\end{document}
